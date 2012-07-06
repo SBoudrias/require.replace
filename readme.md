@@ -18,80 +18,81 @@ Download the [production version][min] or the [development version][max].
 `replace!` take a config object where you set the `pattern` and a function returning a `value`.
 
 ```javascript
-	require.config({
-		config: {
-			replace: {
-				pattern : 'NLS',
-				value   : function() {
-					return "fr_CA";
-				}
+require.config({
+	config: {
+		replace: {
+			pattern : 'NLS',
+			value   : function() {
+				return "fr_CA";
 			}
-		},
-		paths: {
-			facebook: "//connect.facebook.net/NLS/all.js"
 		}
-	});
-	
-	require(["replace!facebook"]);
-	
-	// Will load: //connect.facebook.net/fr_CA/all.js
+	},
+	paths: {
+		facebook: "//connect.facebook.net/NLS/all.js"
+	}
+});
+
+require(["replace!facebook"]);
+
+// Will load: //connect.facebook.net/fr_CA/all.js
 ```
 
 You can also set specific `pattern` and `value` options for each module.
 
 ```javascript
-	require.config({
-		config: {
-			replace: {
-				facebook: {
-					pattern : 'NLS',
-					value   : function() {
-						return "fr_CA";
-					}
+require.config({
+	config: {
+		replace: {
+			facebook: {
+				pattern : 'NLS',
+				value   : function() {
+					return "fr_CA";
 				}
 			}
-		},
-		paths: {
-			facebook: "//connect.facebook.net/NLS/all.js"
 		}
-	});
+	},
+	paths: {
+		facebook: "//connect.facebook.net/NLS/all.js"
+	}
+});
 ```
 
 ### Real use example settings
 
 **index.html**
-```javascript
-	<script type="text/javascript">
-		window.appData = {
-			user: {
-				locale: "fr_CA"
-			}
+```html
+<script type="text/javascript">
+	window.appData = {
+		user: {
+			locale: "fr_CA"
 		}
-	</script>
+	}
+</script>
 ```
 
 **config.js**
 ```javascript
-	require.config({
-		config: {
-			replace: {
-				facebook: {
-					pattern : 'NLS',
-					value   : function() {
-						return window.appData.user.locale;
-					}
+require.config({
+	config: {
+		replace: {
+			facebook: {
+				pattern : 'NLS',
+				value   : function() {
+					return window.appData.user.locale;
 				}
 			}
-		},
-		paths: {
-			facebook: "//connect.facebook.net/NLS/all.js"
 		}
-	});
+	},
+	paths: {
+		facebook: "//connect.facebook.net/NLS/all.js"
+	}
+});
 ```
 
 ## Settings
 
 **pattern** : Can be any string or RegExp. The `pattern` will be used inside javascript `replace()` function.
+
 **value**   : Must be a `function` returning a `string` (or a `variable` referencing a string). This param need to be a function so it will also work when passing through the `r.js` optimizer.
 
 ## Optimisation (`r.js`)
