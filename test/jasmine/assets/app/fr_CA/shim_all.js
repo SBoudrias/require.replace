@@ -1,0 +1,1 @@
+window.LANG_FILE = "fr_CA";

@@ -1,0 +1,29 @@
+{
+  "name": "require.replace",
+  "title": "Require.js Replace!",
+  "description": "Require.js plugin to load conditionnal modules (i18n and such)",
+  "version": "0.1.0",
+  "homepage": "https://github.com/SBoudrias/require.replace",
+  "author": {
+    "name": "Simon Boudrias",
+    "email": "admin@simonboudrias.com",
+    "url": "http://simonboudrias.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/SBoudrias/require.replace.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SBoudrias/require.replace/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/SBoudrias/require.replace/blob/master/LICENSE-MIT"
+    }
+  ],
+  "dependencies": {
+    "requirejs": "~2.0.2"
+  },
+  "keywords": []
+}
