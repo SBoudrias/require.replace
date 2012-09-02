@@ -1,6 +1,6 @@
 # Require.js replace! plugin
 
-[![Build Status](https://secure.travis-ci.org/SBoudrias/require.replace.png)](http://travis-ci.org/SBoudrias/require.replace])
+[![Build Status](https://secure.travis-ci.org/SBoudrias/require.replace.png)](http://travis-ci.org/SBoudrias/require.replace)
 
 The `replace!` plugin is used to replace a `pattern` with a `value` in a module path before it's loaded.
 
