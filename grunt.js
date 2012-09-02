@@ -50,5 +50,6 @@ module.exports = function(grunt) {
   });
   
   grunt.registerTask("default", "lint jasmine concat min");
+  grunt.registerTask("travis", "lint jasmine");
   
 };

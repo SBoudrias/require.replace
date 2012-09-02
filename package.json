@@ -23,7 +23,11 @@
     }
   ],
   "dependencies": {
+    "bbb": "~0.1.11",
     "requirejs": "~2.0.2"
+  },
+  "scripts": {
+    "test": "bbb travis --verbose"
   },
   "keywords": []
 }
