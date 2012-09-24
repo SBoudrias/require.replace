@@ -19,8 +19,16 @@ module.exports = function(grunt) {
     
     lint: {
       files: [
-        "require.replace.js"
+        "grunt.js",
+        "require.replace.js",
+        "test/spec/*.js",
+        "test/assets/**/*.js"
       ]
+    },
+    
+    watch: {
+      files: '<config:lint.files>',
+      tasks: 'travis'
     },
     
     concat: {
@@ -49,6 +57,9 @@ module.exports = function(grunt) {
     
   });
   
+  grunt.loadNpmTasks('grunt-jasmine-task');
+  
   grunt.registerTask("default", "lint jasmine concat min");
+  grunt.registerTask("travis", "lint jasmine");
   
 };
