@@ -5,6 +5,8 @@ describe("Replace! modules", function() {
 	
 	beforeEach(function() {
 		requirejs.undef( 'all' );
+		requirejs.undef( 'fr_CA/all' );
+		requirejs.undef( 'en_US/all' );
 		requirejs.undef( 'replace' );
 		requirejs.undef( 'replace!all' );
 		requirejs.undef( 'replace!nls/all' );
@@ -66,5 +68,29 @@ describe("Replace! modules", function() {
 		}, "module haven't loaded", 4000);
 		
 	});
+	
+	//it("can use loaded named modules", function() {
+	//	
+	//	define("fr_CA/all", [], function() {
+	//		"use strict";
+	//
+	//		return "named module";
+	//	});
+	//	
+	//	// run test
+	//	var flag = false;
+	//	
+	//	runs(function() {
+	//		require(["replace!all"], function( module ) {
+	//			flag = true;
+	//			expect(module).toBe('named module');
+	//		});
+	//	});
+	//	
+	//	waitsFor(function() {
+	//		return flag;
+	//	}, "module haven't loaded", 4000);
+	//	
+	//});
 	
 });

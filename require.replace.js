@@ -10,52 +10,51 @@
 (function () {
     'use strict';
 	
-    define(['module'], function (module) {
-        var masterConfig = module.config();
+    define({
+		version: '0.1.0',
 		
-        return {
+		// ---
+		// Called when a dependency needs to be loaded.
+		
+		load: function (name, req, onLoad, config) {
 			
-            version: '0.1.0',
+			if( !config.config.replace ) {
+				throw new Error('Require.replace need to be configured');
+			}
 			
+			var replaceConfig = config.config.replace,
+				moduleConfig  = replaceConfig[name] || replaceConfig,
+				toLoad = [],
+				pattern, value, path;
 			
-            /**
-             * Called when a dependency needs to be loaded.
-             */
-			
-            load: function (name, req, onLoad, config) {
+			if ( !config.isBuild ) {
 				
-				var moduleConfig = masterConfig[name] || masterConfig,
-					toLoad = [],
-					pattern, value, path;
+				// Ignore if we're in a build process, this plugin is
+				// only used for condtionnal loading
 				
-                if ( !config.isBuild ) {
-					
-                    // Ignore if we're in a build process, this plugin is
-					// only used for condtionnal loading
-					
-					pattern = moduleConfig.pattern;
-					value   = moduleConfig.value();
-					
-					if ( config.paths[name] ) {
-						// If there's a `paths` config, use it
-						
-						config.paths[name] = config.paths[name].replace( pattern, value );
-						toLoad.push( name );
-						
-					} else {
-						// else, the name is a path
-						
-						path = req.toUrl( name ).replace( pattern, value );
-						toLoad.push( path );
-						
-					}
-                    
-                }
+				pattern = moduleConfig.pattern;
+				value   = moduleConfig.value();
 				
-				req(toLoad, function ( value ) {
-					onLoad( value );
-				});
-            }
-        };
+				if ( config.paths[name] ) {
+					// If there's a `paths` config, use it
+					// @note: This will override the defined paths config to work with shimmed modules
+					
+					config.paths[name] = config.paths[name].replace( pattern, value );
+					toLoad.push( name );
+					
+				} else {
+					// else, the name is a path
+					
+					path = name.replace( pattern, value );
+					toLoad.push( path );
+					
+				}
+				
+			}
+			
+			req(toLoad, function ( value ) {
+				onLoad( value );
+			});
+		}
     });
 }());
