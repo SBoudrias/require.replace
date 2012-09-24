@@ -1,5 +1,7 @@
 # Require.js replace! plugin
 
+[![Build Status](https://secure.travis-ci.org/SBoudrias/require.replace.png)](http://travis-ci.org/SBoudrias/require.replace)
+
 The `replace!` plugin is used to replace a `pattern` with a `value` in a module path before it's loaded.
 
 A basic usage could be to work with third party services' localized scripts (like Facebook js SDK).
@@ -100,7 +102,7 @@ require.config({
 Modules called with `replace!` will be automatically excluded (ignored) from build for logical reason.
 
 ## Contributing
-Try to follow [idiomatic.js style guidelines](https://github.com/rwldrn/idiomatic.js/) in your commits. Add unit tests for any new or changed functionality. Lint and test your code using [grunt-bbb](https://github.com/backbone-boilerplate/grunt-bbb) (has built-in jasmine unit test support).
+Try to follow [idiomatic.js style guidelines](https://github.com/rwldrn/idiomatic.js/) in your commits. Add unit tests for any new or changed functionality. Lint and test your code using [grunt](https://github.com/cowboy/grunt).
 
 ## Release History
 06/07/2012 - v0.1.0 - First release

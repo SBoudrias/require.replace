@@ -23,7 +23,12 @@
     }
   ],
   "dependencies": {
+    "grunt": "~0.3.14",
+    "grunt-jasmine-task": "~0.2.2",
     "requirejs": "~2.0.2"
+  },
+  "scripts": {
+    "test": "grunt travis --verbose"
   },
   "keywords": []
 }
