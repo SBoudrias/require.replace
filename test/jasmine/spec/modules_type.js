@@ -26,7 +26,7 @@ describe("Replace! modules", function() {
 				replace: {
 					pattern: "nls",
 					value: function() {
-						return "fr_CA";
+						return "en_US";
 					}
 				}
 			}
@@ -41,7 +41,7 @@ describe("Replace! modules", function() {
 		runs(function() {
 			require(["replace!all"], function( module ) {
 				flag = true;
-				expect(module).toBe('fr_CA');
+				expect(module).toBe('en_US');
 			});
 		});
 		
@@ -59,7 +59,7 @@ describe("Replace! modules", function() {
 		runs(function() {
 			require(["replace!shim_all"], function( module ) {
 				flag = true;
-				expect(module).toBe('fr_CA');
+				expect(module).toBe('en_US');
 			});
 		});
 		
@@ -69,28 +69,26 @@ describe("Replace! modules", function() {
 		
 	});
 	
-	//it("can use loaded named modules", function() {
-	//	
-	//	define("fr_CA/all", [], function() {
-	//		"use strict";
-	//
-	//		return "named module";
-	//	});
-	//	
-	//	// run test
-	//	var flag = false;
-	//	
-	//	runs(function() {
-	//		require(["replace!all"], function( module ) {
-	//			flag = true;
-	//			expect(module).toBe('named module');
-	//		});
-	//	});
-	//	
-	//	waitsFor(function() {
-	//		return flag;
-	//	}, "module haven't loaded", 4000);
-	//	
-	//});
+	it("can use inline named modules", function() {
+		
+		define("en_US/inline", [], function() {
+			return "named module";
+		});
+		
+		// run test
+		var flag = false;
+		
+		runs(function() {
+			require(["replace!nls/inline"], function( module ) {
+				flag = true;
+				expect(module).toBe('named module');
+			});
+		});
+		
+		waitsFor(function() {
+			return flag;
+		}, "module haven't loaded", 4000);
+		
+	});
 	
 });

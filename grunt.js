@@ -21,7 +21,7 @@ module.exports = function(grunt) {
       files: [
         "grunt.js",
         "require.replace.js",
-        "test/spec/*.js",
+        "test/jasmine/spec/*.js",
         "test/assets/**/*.js"
       ]
     },
