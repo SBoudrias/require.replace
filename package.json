@@ -23,8 +23,10 @@
     }
   ],
   "dependencies": {
+    "grunt-cli": "*",
     "grunt": "~0.4",
-    "grunt-contrib": "*"
+    "grunt-contrib": "*",
+    "grunt-mocha": "*"
   },
   "scripts": {
     "test": "grunt travis --verbose"

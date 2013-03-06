@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link href="vendors/mocha.css" rel="stylesheet" type="text/css">
+	<script src="vendors/jquery.js"></script>
+	<script src="vendors/chai.js"></script>
+	<script src="vendors/mocha.js"></script>
+	<script>
+		window.expect = chai.expect;
+		mocha.setup({
+			ui: 'bdd',
+			globals: [ 'LANG_FILE' ]
+		});
+	</script>
+</head>
+<body>
+	<div id="mocha"></div>
+
+	<script src="vendors/require.js"></script>
+	<script type="text/javascript">
+		require.config({
+			baseUrl: "fixtures",
+			paths: {
+				"specs"   : "../specs",
+				"jquery"  : "../vendors/jquery"
+			}
+		});
+
+		require([
+			"specs/utils",
+			"specs/config_options",
+			"specs/modules_type",
+			"specs/replace_path",
+			"specs/replace_patterns"
+		], function() {
+			window.mocha.run();
+		});
+	</script>
+</body>
+</html>

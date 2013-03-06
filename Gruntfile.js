@@ -3,35 +3,46 @@
 // https://github.com/cowboy/grunt/blob/master/docs/configuring.md
 /*jshint strict:false */
 module.exports = function( grunt ) {
+
+  var files = [
+    "Gruntfile.js",
+    "require.replace.js",
+    "test/mocha/spec/*.js"
+  ];
   
   grunt.initConfig({
-
-    watch: {
-      files: "<%= lint.files %>",
-      tasks: "travis"
-    },
     
     jshint: {
       options: {
         jshintrc : ".jshintrc"
       },
-      files: [
-        "Gruntfile.js",
-        "require.replace.js",
-        "test/jasmine/spec/*.js",
-        "test/assets/**/*.js"
-      ]
+      files: files
     },
-    
-    jasmine: {
-      all: [ "test/jasmine/*.html" ]
+
+    watch: {
+      files: files,
+      tasks: "travis"
+    },
+
+    connect: {
+      run: {
+        options: {
+          port: 3000,
+          keepalive: true
+        }
+      }
+    },
+
+    mocha: {
+      all: [ "test/mocha/**/*.html" ]
     }
     
   });
   
   grunt.loadNpmTasks("grunt-contrib");
+  grunt.loadNpmTasks("grunt-mocha");
   
-  grunt.registerTask("default", [ "jshint", "jasmine" ]);
+  grunt.registerTask("default", [ "jshint", "mocha" ]);
   grunt.registerTask("travis", [ "default" ]);
   
 };
