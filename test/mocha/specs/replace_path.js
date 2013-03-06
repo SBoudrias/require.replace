@@ -25,6 +25,18 @@ define([
 				}
 			}
 		});
+
+		var r3 = utils.context({
+			config: {
+				replace: {
+					pattern: "nls",
+					value: function() {
+						return "en_US";
+					},
+					ignore: [ "en_US" ]
+				}
+			}
+		});
 		
 		it("can use `paths` config", function( done ) {
 			
@@ -39,6 +51,15 @@ define([
 
 			r2(["replace!nls/all"], function( module ) {
 				expect(module).to.equal('fr_CA');
+				done();
+			});
+
+		});
+
+		it("should allow ignored modules", function( done ) {
+			
+			r3(["replace!all"], function( module ) {
+				expect(typeof module).to.equal('undefined');
 				done();
 			});
 

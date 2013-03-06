@@ -7,7 +7,7 @@ module.exports = function( grunt ) {
   var files = [
     "Gruntfile.js",
     "require.replace.js",
-    "test/mocha/spec/*.js"
+    "test/mocha/specs/*.js"
   ];
   
   grunt.initConfig({

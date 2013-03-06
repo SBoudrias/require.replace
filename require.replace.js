@@ -7,6 +7,15 @@
  */
 (function () {
 	'use strict';
+
+	var aIndexOf = Array.prototype.indexOf || function( needle ) {
+		for(var i = 0; i < this.length; i++) {
+			if( this[i] === needle ) {
+				return i;
+			}
+		}
+		return -1;
+	};
 	
 	define({
 		version: '0.2.0',
@@ -23,33 +32,40 @@
 			var replaceConfig = config.config.replace,
 				moduleConfig  = replaceConfig[name] || replaceConfig,
 				toLoad = [],
+				shouldRun = config.isBuild ? moduleConfig.optimize : true,
 				pattern, value, path;
-			
-			if ( !config.isBuild ) {
+
+			(function() {
 				
-				// Ignore if we're in a build process, this plugin is
-				// only used for condtionnal loading
-				
+				// Skip if we're in build process and config.optimize is set to false
+				if ( !shouldRun ) return;
+
 				pattern = moduleConfig.pattern;
 				value   = moduleConfig.value();
-				
+
+				// skip if the `value` is contained in the ignored value list
+				if( moduleConfig.ignore
+						&& aIndexOf.call( moduleConfig.ignore, value ) >= 0 ) return;
+
+				// If there's a `paths` config, use it
 				if ( config.paths[name] ) {
-					// If there's a `paths` config, use it
-					// @note: This will override the defined paths config to work with shimmed modules
-					
+
+					// @note: This override the defined path config to work with shimmed
+					//        modules.
 					config.paths[name] = config.paths[name].replace( pattern, value );
+
 					toLoad.push( name );
 					
+				// else, the name is a path
 				} else {
-					// else, the name is a path
 					
 					path = name.replace( pattern, value );
 					toLoad.push( path );
 					
 				}
 				
-			}
-			
+			}());
+
 			req(toLoad, function ( value ) {
 				onLoad( value );
 			});
