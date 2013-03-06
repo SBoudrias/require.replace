@@ -1,16 +1,14 @@
-/*
- * require.replace
+/*!
+ * require.replace.js
  * https://github.com/SBoudrias/require.replace
  *
- * Copyright (c) 2012 Simon Boudrias
+ * Copyright (c) 2013, Simon Boudrias
  * Licensed under the MIT license.
  */
-/*global require: false, navigator: false, define: false, console: true */
-
 (function () {
-    'use strict';
+	'use strict';
 	
-    define({
+	define({
 		version: '0.2.0',
 		
 		// ---
@@ -56,5 +54,5 @@
 				onLoad( value );
 			});
 		}
-    });
+	});
 }());

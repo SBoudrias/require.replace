@@ -1,6 +1,4 @@
 /*jshint strict:false */
-/*global describe:true it:true expect:true beforeEach:true afterEach:true waitsFor:true runs:true require:true define:true requirejs:true */
-
 describe("Replace! path", function() {
 	
 	beforeEach(function() {
