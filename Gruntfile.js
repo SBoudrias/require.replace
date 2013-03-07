@@ -11,6 +11,10 @@ module.exports = function( grunt ) {
   ];
   
   grunt.initConfig({
+
+    clean: {
+      test: [ "test/mocha/build" ]
+    },
     
     jshint: {
       options: {
@@ -35,14 +39,23 @@ module.exports = function( grunt ) {
 
     mocha: {
       all: [ "test/mocha/**/*.html" ]
+    },
+
+    simplemocha: {
+      options: {
+        ui: "bdd",
+        reporter: "spec"
+      },
+      all: "test/mocha/node.js"
     }
     
   });
   
   grunt.loadNpmTasks("grunt-contrib");
-  grunt.loadNpmTasks("grunt-mocha");
+  grunt.loadNpmTasks("grunt-mocha"); // client side mocha
+  grunt.loadNpmTasks('grunt-simple-mocha'); // server side mocha
   
-  grunt.registerTask("default", [ "jshint", "mocha" ]);
+  grunt.registerTask("default", [ "jshint", "mocha", "simplemocha", "clean:test" ]);
   grunt.registerTask("travis", [ "default" ]);
   
 };
