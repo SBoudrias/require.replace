@@ -1,32 +1,24 @@
-# Require.js replace! plugin
+RequireJS `replace!` plugin [![Build Status](https://secure.travis-ci.org/SBoudrias/require.replace.png)](http://travis-ci.org/SBoudrias/require.replace)
+============================================
 
-[![Build Status](https://secure.travis-ci.org/SBoudrias/require.replace.png)](http://travis-ci.org/SBoudrias/require.replace)
+The `replace!` plugin is used to replace a `pattern` by a `value` in a module path before
+it's loaded.
 
-The `replace!` plugin is used to replace a `pattern` with a `value` in a module path before it's loaded.
+The **main usage is to load localized (i18n) scripts** for any dependencie you use (like `jQuery.Validation` or `Moment.js`) or third party localized SDKs (like the Facebook JS SDK).
 
-A basic usage could be to work with third party services' localized scripts (like Facebook js SDK).
+`replace!` have been tested under [require.js](https://github.com/jrburke/requirejs) v2.1.* serie.
 
-`replace!` have been tested under [require.js](https://github.com/jrburke/requirejs) [v2.0.2](https://github.com/jrburke/requirejs/tree/2.0.2).
 
-## Download
-
-Download the [production version][min] or the [development version][max].
-
-[min]: https://raw.github.com/SBoudrias/require.replace/master/dist/require.replace.min.js
-[max]: https://raw.github.com/SBoudrias/require.replace/master/dist/require.replace.js
-
-## Basic settings
-
-`replace!` take a config object where you set the `pattern` and a function returning a `value`.
+Basic settings
+------------------------------------------
+`replace!` take a config object where you set the `pattern` to be replaced by the `value`.
 
 ```javascript
 require.config({
 	config: {
 		replace: {
-			pattern : 'NLS',
-			value   : function() {
-				return "fr_CA";
-			}
+			pattern : "NLS",
+			value   : "fr_CA"
 		}
 	},
 	paths: {
@@ -47,22 +39,68 @@ require.config({
 		replace: {
 			facebook: {
 				pattern : 'NLS',
-				value   : function() {
-					return "fr_CA";
-				}
+				value   : "fr_CA"
+			},
+			moment: {
+				pattern : 'NLS',
+				value   : "fr_CA"
 			}
 		}
 	},
 	paths: {
-		facebook: "//connect.facebook.net/NLS/all.js"
+		facebook: "//connect.facebook.net/NLS/all.js",
+		moment: "components/NLS/moment.js"
 	}
 });
 ```
 
-### Real use example settings
+### Ignoring a value
 
-**index.html**
+Localized plugins like `jQuery.Validation` or `Moment.js` comes with built-in locales and
+extra locales in separate files. To ease built-in locales declaration, you can setup
+`replace!` to ignore speficied locales for a module.
+
+```Javascript
+var locale;
+require.config({
+	config: {
+		replace: {
+			pattern: "nls",
+			value: function() {
+				return locale;
+			},
+			ignore: [ "en_US" ]
+		}
+	}
+});
+
+locale = "fr_CA";
+require(["replace!nls/locale.js"]);
+// Will load `fr_CA/locale.js`
+
+locale = "en_US";
+require(["replace!nls/locale.js"], function( ref ) { /**/ });
+// Won't load any module, and will pass `undefined` as `ref` value.
+```
+
+
+Settings
+------------------------------------
+**pattern** _required_ : Can be any `String` or `RegExp`. _The `pattern` will be used
+inside javascript `String.replace()` function._
+
+**value**   _required_ : May be a `String` or a `Function` returning a `String` (or a
+variable referencing a string). Adding the value as a `Function` may protect the build from
+failing if an unreachable object is used as value.
+
+**ignore** : an `Array` containing each locale to ignore when requested.
+
+
+Real use example settings
+------------------------------------
+
 ```html
+<!-- index.html -->
 <script type="text/javascript">
 	window.appData = {
 		user: {
@@ -72,8 +110,8 @@ require.config({
 </script>
 ```
 
-**config.js**
 ```javascript
+// config.js
 require.config({
 	config: {
 		replace: {
@@ -91,23 +129,44 @@ require.config({
 });
 ```
 
-## Settings
 
-**pattern** : Can be any string or RegExp. The `pattern` will be used inside javascript `replace()` function.
+Optimisation (`r.js`)
+------------------------------------
 
-**value**   : Must be a `function` returning a `string` (or a `variable` referencing a string). This param need to be a function so it will also work when passing through the `r.js` optimizer.
+By default, modules required via `replace!` will be ignored during the build process.
 
-## Optimisation (`r.js`)
+To include module in the build, you need to set the `optimize` option to `true`.
 
-Modules called with `replace!` will be automatically excluded (ignored) from build for logical reason.
+```javascript
+requirejs.optimize({
+	replace: {
+		pattern: "NLS",
+		value: "fr_CA",
+		optimize: true
+	}
+});
+```
 
-## Contributing
-Try to follow [idiomatic.js style guidelines](https://github.com/rwldrn/idiomatic.js/) in your commits. Add unit tests for any new or changed functionality. Lint and test your code using [grunt](https://github.com/cowboy/grunt).
+Make sure to checkout `test/mocha/node.js` file if you need example usage.
 
-## Release History
-06/07/2012 - v0.1.0 - First release  
+_(This setting will work with different RequireJS building tools; e.g. grunt-contrib-requirejs, etc)_
+
+
+Contributing
+------------------------------------
+Please follow [idiomatic.js style guidelines](https://github.com/rwldrn/idiomatic.js/) in
+your commits. Add unit tests for any new or changed functionality. Lint and test your code
+using [grunt](https://github.com/cowboy/grunt).
+
+
+Release History
+------------------------------------
+12/03/2013 - v0.2.0 - Add support build system and ignored values    
 24/09/2012 - v0.2.0 - Add support for named inlined module  
+06/07/2012 - v0.1.0 - First release  
 
-## License
+
+License
+------------------------------------
 Copyright (c) 2012 Simon Boudrias  
 Licensed under the MIT license.
