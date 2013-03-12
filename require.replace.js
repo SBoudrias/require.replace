@@ -20,7 +20,7 @@
 	};
 	
 	define({
-		version: '0.2.0',
+		version: '0.3.0',
 		
 		// ---
 		// Called when a dependency needs to be loaded.

@@ -1,6 +1,6 @@
 {
   "name": "require.replace",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "main": "require.replace.js",
   "dependencies": {
   	"requirejs": "~2.1"

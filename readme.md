@@ -6,7 +6,7 @@ it's loaded.
 
 The **main usage is to load localized (i18n) scripts** for any dependencie you use (like `jQuery.Validation` or `Moment.js`) or third party localized SDKs (like the Facebook JS SDK).
 
-`replace!` have been tested under [require.js](https://github.com/jrburke/requirejs) v2.* serie.
+`replace!` have been tested under [require.js](https://github.com/jrburke/requirejs) v2.1.* serie.
 
 
 Basic settings
@@ -161,6 +161,7 @@ using [grunt](https://github.com/cowboy/grunt).
 
 Release History
 ------------------------------------
+12/03/2013 - v0.2.0 - Add support build system and ignored values    
 24/09/2012 - v0.2.0 - Add support for named inlined module  
 06/07/2012 - v0.1.0 - First release  
 

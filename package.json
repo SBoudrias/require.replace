@@ -2,7 +2,7 @@
   "name": "require.replace",
   "title": "RequireJS Replace! (general i18n helper)",
   "description": "RequireJS plugin to replace paths patterns by variable values (leveraging i18n and such)",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "homepage": "https://github.com/SBoudrias/require.replace",
   "author": {
     "name": "Simon Boudrias",
