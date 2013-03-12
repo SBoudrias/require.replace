@@ -48,10 +48,8 @@ define([
 			var r = utils.context({
 				config: {
 					replace: {
-						all: {
-							pattern: "nls",
-							value: "en_US"
-						}
+						pattern: "nls",
+						value: "en_US"
 					}
 				}
 			});
@@ -68,11 +66,9 @@ define([
 			var r = utils.context({
 				config: {
 					replace: {
-						all: {
-							pattern: "nls",
-							value: function() {
-								return "fr_CA";
-							}
+						pattern: "nls",
+						value: function() {
+							return "fr_CA";
 						}
 					}
 				}

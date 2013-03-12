@@ -44,9 +44,7 @@ describe("Build system", function() {
 			out: 'test/mocha/build/main-built-2.js',
 			config: {
 				replace: {
-					value: function() {
-						return "fr_CA";
-					},
+					value: "fr_CA",
 					optimize: false,
 					pattern: "nls"
 				}
@@ -68,9 +66,7 @@ describe("Build system", function() {
 			out: 'test/mocha/build/main-built-3.js',
 			config: {
 				replace: {
-					value: function() {
-						return "fr_CA";
-					},
+					value: "fr_CA",
 					optimize: true,
 					pattern: "nls"
 				}
