@@ -8,9 +8,7 @@ define([
 			config: {
 				replace: {
 					pattern: "nls",
-					value: function() {
-						return "en_US";
-					}
+					value: "en_US"
 				}
 			}
 		});
@@ -19,9 +17,7 @@ define([
 			config: {
 				replace: {
 					pattern: "nls",
-					value: function() {
-						return "fr_CA";
-					}
+					value: "fr_CA"
 				}
 			}
 		});
@@ -30,9 +26,7 @@ define([
 			config: {
 				replace: {
 					pattern: "nls",
-					value: function() {
-						return "en_US";
-					},
+					value: "en_US",
 					ignore: [ "en_US" ]
 				}
 			}

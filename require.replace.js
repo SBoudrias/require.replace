@@ -8,6 +8,8 @@
 (function () {
 	'use strict';
 
+	var toString = Object.prototype.toString;
+
 	var aIndexOf = Array.prototype.indexOf || function( needle ) {
 		for(var i = 0; i < this.length; i++) {
 			if( this[i] === needle ) {
@@ -41,7 +43,11 @@
 				if ( !shouldRun ) return;
 
 				pattern = moduleConfig.pattern;
-				value   = moduleConfig.value();
+
+				value = moduleConfig.value;
+				if( toString.call(moduleConfig.value) === '[object Function]' ) {
+					value = moduleConfig.value();
+				}
 
 				// skip if the `value` is contained in the ignored value list
 				if( moduleConfig.ignore

@@ -11,9 +11,7 @@ define([
 				config: {
 					replace: {
 						pattern: "nls",
-						value: function() {
-							return "fr_CA";
-						}
+						value: "fr_CA"
 					}
 				}
 			});
@@ -32,9 +30,7 @@ define([
 					replace: {
 						all: {
 							pattern: "nls",
-							value: function() {
-								return "en_US";
-							}
+							value: "en_US"
 						}
 					}
 				}
@@ -42,6 +38,48 @@ define([
 			
 			r(["replace!all"], function( module ) {
 				expect(module).to.equal('en_US');
+				done();
+			});
+			
+		});
+
+		it("work with `String` value", function( done ) {
+			
+			var r = utils.context({
+				config: {
+					replace: {
+						all: {
+							pattern: "nls",
+							value: "en_US"
+						}
+					}
+				}
+			});
+			
+			r(["replace!all"], function( module ) {
+				expect(module).to.equal('en_US');
+				done();
+			});
+			
+		});
+
+		it("work with `Function` value", function( done ) {
+			
+			var r = utils.context({
+				config: {
+					replace: {
+						all: {
+							pattern: "nls",
+							value: function() {
+								return "fr_CA";
+							}
+						}
+					}
+				}
+			});
+			
+			r(["replace!all"], function( module ) {
+				expect(module).to.equal('fr_CA');
 				done();
 			});
 			

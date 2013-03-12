@@ -8,9 +8,7 @@ define([
 			config: {
 				replace: {
 					pattern: "nls",
-					value: function() {
-						return "en_US";
-					}
+					value: "en_US"
 				}
 			}
 		});
