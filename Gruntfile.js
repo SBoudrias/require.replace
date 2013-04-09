@@ -51,9 +51,11 @@ module.exports = function( grunt ) {
     
   });
   
-  grunt.loadNpmTasks("grunt-contrib");
+  grunt.loadNpmTasks("grunt-contrib-clean");
+  grunt.loadNpmTasks("grunt-contrib-jshint");
+  grunt.loadNpmTasks("grunt-contrib-connect");
   grunt.loadNpmTasks("grunt-mocha"); // client side mocha
-  grunt.loadNpmTasks('grunt-simple-mocha'); // server side mocha
+  grunt.loadNpmTasks("grunt-simple-mocha"); // server side mocha
   
   grunt.registerTask("default", [ "jshint", "mocha", "simplemocha", "clean:test" ]);
   grunt.registerTask("travis", [ "default" ]);

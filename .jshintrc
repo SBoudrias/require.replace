@@ -33,24 +33,23 @@
     "undef"     : true,
     "validthis" : true,
     "withstmt"  : true,
-    "predef"    : [
-        "window",
-        "document",
-        "console",
-
-        "require",
-        "define",
-        "requirejs",
-
-        "module",
-
-        "describe",
-        "it",
-        "expect",
-        "beforeEach",
-        "afterEach",
-        "waitsFor",
-        "runs"
-
-    ]
+    "globals"   : {
+        "window"     : true,
+        "document"   : true,
+        "console"    : true,
+        
+        "require"    : true,
+        "define"     : true,
+        "requirejs"  : true,
+        
+        "module"     : true,
+        
+        "describe"   : true,
+        "it"         : true,
+        "expect"     : true,
+        "beforeEach" : true,
+        "afterEach"  : true,
+        "waitsFor"   : true,
+        "runs"       : true
+    }
 }

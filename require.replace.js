@@ -6,7 +6,7 @@
  * Licensed under the MIT license.
  */
 (function () {
-	'use strict';
+	"use strict";
 
 	var toString = Object.prototype.toString;
 
@@ -20,7 +20,7 @@
 	};
 	
 	define({
-		version: '0.3.0',
+		version: "0.3.0",
 		
 		// ---
 		// Called when a dependency needs to be loaded.
@@ -28,7 +28,7 @@
 		load: function (name, req, onLoad, config) {
 			
 			if( !config.config.replace ) {
-				throw new Error('Require.replace need to be configured');
+				throw new Error("Require.replace need to be configured");
 			}
 			
 			var replaceConfig = config.config.replace,
@@ -39,13 +39,13 @@
 
 			(function() {
 				
-				// Skip if we're in build process and config.optimize is set to false
+				// Skip if we"re in build process and config.optimize is set to false
 				if ( !shouldRun ) return;
 
 				pattern = moduleConfig.pattern;
 
 				value = moduleConfig.value;
-				if( toString.call(moduleConfig.value) === '[object Function]' ) {
+				if( toString.call(moduleConfig.value) === "[object Function]" ) {
 					value = moduleConfig.value();
 				}
 
