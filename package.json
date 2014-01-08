@@ -25,6 +25,19 @@
   "scripts": {
     "test": "grunt travis --verbose"
   },
+  "testling": {
+    "html": "test/mocha/browser.html",
+    "harness": "mocha-bdd",
+    "browsers": [
+      "ie/6..latest",
+      "chrome/20..latest",
+      "firefox/10..latest",
+      "safari/latest",
+      "opera/11.0..latest",
+      "iphone/6",
+      "ipad/6"
+    ]
+  },
   "keywords": [],
   "devDependencies": {
     "grunt-cli": "*",

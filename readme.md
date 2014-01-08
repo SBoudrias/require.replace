@@ -8,6 +8,8 @@ The **main usage is to load localized (i18n) scripts** for any dependencie you u
 
 `replace!` have been tested under [require.js](https://github.com/jrburke/requirejs) v2.1.* serie.
 
+[![browser support](https://ci.testling.com/SBoudrias/require.replace.png)](https://ci.testling.com/SBoudrias/require.replace)
+
 
 Basic settings
 ------------------------------------------
