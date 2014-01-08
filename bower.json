@@ -2,6 +2,7 @@
   "name": "require.replace",
   "version": "0.3.0",
   "main": "require.replace.js",
+  "ignore": [ "test/", "Gruntfile.js", ".travis.yml", "package.json" ],
   "dependencies": {
   	"requirejs": "~2.1"
   }
