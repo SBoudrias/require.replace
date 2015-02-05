@@ -6,11 +6,11 @@ it's loaded.
 
 The **main usage is to load localized (i18n) scripts** for any dependencie you use (like `jQuery.Validation` or `Moment.js`) or third party localized SDKs (like the Facebook JS SDK).
 
-`replace!` have been tested under [require.js](https://github.com/jrburke/requirejs) v2.1.* serie.
+`replace!` has been tested with the [require.js](https://github.com/jrburke/requirejs) v2.1.* series.
 
 Basic settings
 ------------------------------------------
-`replace!` take a config object where you set the `pattern` to be replaced by the `value`.
+`replace!` takes a config object where you set the `pattern` to be replaced by the `value`.
 
 ```javascript
 require.config({
@@ -146,7 +146,7 @@ requirejs.optimize({
 });
 ```
 
-Make sure to checkout `test/mocha/node.js` file if you need example usage.
+Make sure to checkout the `test/mocha/node.js` file for an optimisation example.
 
 _(This setting will work with different RequireJS building tools; e.g. grunt-contrib-requirejs, etc)_
 
