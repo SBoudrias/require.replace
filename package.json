@@ -25,30 +25,17 @@
   "scripts": {
     "test": "grunt travis --verbose"
   },
-  "testling": {
-    "html": "test/mocha/browser.html",
-    "harness": "mocha-bdd",
-    "browsers": [
-      "chrome/20..latest",
-      "firefox/10..latest",
-      "safari/latest",
-      "opera/11.0..latest",
-      "ie/7..latest",
-      "iphone/6",
-      "ipad/6"
-    ]
-  },
   "keywords": [],
   "devDependencies": {
-    "grunt-cli": "*",
-    "grunt": "~0.4",
-    "grunt-contrib-jshint": "*",
-    "grunt-contrib-clean": "*",
-    "grunt-contrib-connect": "*",
-    "grunt-mocha": "~0.3",
-    "grunt-simple-mocha": "~0.4",
-    "chai": "~1.5.0",
-    "requirejs": "~2.1.5",
-    "lodash": "~1.0.1"
+    "chai": "^2.1.0",
+    "grunt": "^0.4",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-connect": "^0.9.0",
+    "grunt-contrib-jshint": "^0.11.0",
+    "grunt-mocha": "^0.4.11",
+    "grunt-simple-mocha": "^0.4",
+    "lodash": "^3.3.1",
+    "requirejs": "^2.1.5"
   }
 }
