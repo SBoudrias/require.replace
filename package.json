@@ -35,7 +35,7 @@
     "grunt-contrib-jshint": "^1.0.0",
     "grunt-mocha": "^1.0.2",
     "grunt-simple-mocha": "^0.4",
-    "lodash": "^4.17.2",
+    "lodash": "^4.17.9",
     "requirejs": "^2.1.5"
   }
 }
