@@ -32,7 +32,7 @@
     "grunt-cli": "^1.2.0",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-connect": "^1.0.2",
-    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-jshint": "^2.0.0",
     "grunt-mocha": "^1.0.2",
     "grunt-simple-mocha": "^0.4",
     "lodash": "^4.17.2",
